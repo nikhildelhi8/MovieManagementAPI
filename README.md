@@ -1,31 +1,51 @@
-# MovieManagementAPI
+# 🎬 Movie Management API
 
-A RESTful API built with ASP.NET Core that allows users to manage movies, directors, and movie details. This API supports full CRUD operations, JWT-based authentication, role-based authorization, versioning, and Swagger documentation.
+A RESTful Web API built with **ASP.NET Core** that allows users to manage a collection of movies, directors, and detailed metadata. The API includes secure authentication, role-based access, versioning, and interactive documentation with Swagger.
 
-✅ Features
-Add, update, delete, and retrieve movies
+---
 
-Associate movies with directors and metadata
+## 📌 Features
 
-Secure endpoints with JWT authentication
+- ✅ **CRUD Operations** for Movies and Directors  
+- 🔐 **JWT Authentication** for secure access  
+- 🛡️ **Role-Based Authorization** (e.g., Admin-only routes)  
+- 📖 **API Versioning** to manage evolving endpoints  
+- 📝 **Swagger UI** with XML comments for clear documentation  
+- 🗂️ **Entity Framework Core** for ORM and database operations  
+- 🔄 **AutoMapper** for mapping DTOs and Entities  
 
-Role-based access control for admin and users
+---
 
-API versioning support
+## 🛠️ Tech Stack
 
-Swagger UI with XML comments for documentation
+- **ASP.NET Core Web API**
+- **Entity Framework Core**
+- **AutoMapper**
+- **Swagger (Swashbuckle)**
+- **SQL Server** (or In-Memory for testing)
+- **JWT Bearer Tokens**
 
-Entity Framework Core for data access
+---
 
-🔧 Tech Stack
-ASP.NET Core Web API
+## 🚀 Getting Started
 
-Entity Framework Core
+### Prerequisites
 
-AutoMapper
+- [.NET 7 SDK](https://dotnet.microsoft.com/en-us/download)
+- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) (or use in-memory DB)
+- [Postman](https://www.postman.com/) or Swagger UI for testing
 
-Swagger (Swashbuckle)
+### Setup
 
-SQL Server or In-Memory DB
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/movie-management-api.git
 
-JWT Authentication
+# Navigate to the project folder
+cd movie-management-api
+
+# Restore dependencies
+dotnet restore
+
+# Run the project
+dotnet run
