@@ -1,0 +1,46 @@
+# -------------------------------------
+# Build artifacts
+/bin/
+/obj/
+
+# Visual Studio cache files
+.vscode/
+/.vs/
+/*.user
+*.suo
+
+# ASP.NET-specific files
+appsettings.*.json
+appsettings.Production.json
+appsettings.Development.json
+
+# Environment files
+.env
+*.env
+
+# Logs
+*.log
+
+# Node.js (if full-stack project)
+/node_modules/
+
+# Dependency directories
+/packages/
+
+# Package-lock or yarn lock (optional)
+/package-lock.json
+/yarn.lock
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Secrets
+secrets.json
+*.key
+*.pfx
+
+# Others
+*.bak
+*.tmp
+
