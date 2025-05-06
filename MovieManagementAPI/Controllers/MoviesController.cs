@@ -8,7 +8,6 @@ using MovieManagementAPI.Entities;
 using MovieManagementAPI.FIlterClass;
 using MovieManagementAPI.Models;
 using MovieManagementAPI.Services;
-
 using SQLitePCL;
 using System.Security.Claims;
 using System.Text.Json;
@@ -24,12 +23,16 @@ namespace MovieManagementAPI.Controllers
 
         private readonly IMovieRepository _movieRepository;
         private readonly IMapper _mapper;
-        const int maxMoviesPageSize = 20; 
+        private readonly ILogger<MoviesController> _logger;
+        const int maxMoviesPageSize = 20;
 
-        public MoviesController(IMovieRepository movieRepository, IMapper mapper)
+        
+
+        public MoviesController(IMovieRepository movieRepository, IMapper mapper , ILogger<MoviesController> logger)
         {
 
             _movieRepository = movieRepository ?? throw new ArgumentNullException(nameof(movieRepository));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
 
         }
@@ -42,21 +45,35 @@ namespace MovieManagementAPI.Controllers
 
             try
             {
+                foreach (var claim in User.Claims)
+                {
+                    Console.WriteLine($"{claim.Type}: {claim.Value}");
+                }
 
 
 
-                var userName = User.FindFirst("sub")?.Value;
+                var userName = User.FindFirst("givenname")?.Value;
 
-                if (userName != "nikhil")
+                if (userName != "Nikhil")
+                {
+
+                    _logger.LogInformation("user is not authorized to access the portal ,wrong jwt token details");
                     return Forbid();
-               
-                
-                    var moviesEntity = await _movieRepository.GetAllMoviesAsync();
+
+                }
+
+
+                var moviesEntity = await _movieRepository.GetAllMoviesAsync();
 
                     if (moviesEntity == null)
-                        return NoContent();
+                {
+                    _logger.LogInformation("No movies is added in the list , add new movies");
+                    return NoContent();
+                }
+                        
 
                     var allMovieDTO = _mapper.Map<IEnumerable<MovieDTO>>(moviesEntity);
+                _logger.LogInformation("Showing Movie details entity");
 
                     return Ok(allMovieDTO);
 

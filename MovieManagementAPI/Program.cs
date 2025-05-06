@@ -4,18 +4,47 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using MovieManagementAPI;
 using MovieManagementAPI.DbContext;
+using MovieManagementAPI.Middlewares;
 using MovieManagementAPI.Services;
-using Newtonsoft.Json.Converters; 
+using Newtonsoft.Json.Converters;
+using Serilog;
 
 // Ensure this is the correct namespace for MovieDbContext // Ensure this is the correct namespace for DTOs
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+//logging section
+
+//default logging 
+//builder.Logging.ClearProviders(); // Clears default providers
+//builder.Logging.AddConsole();     // Adds Console logging
+//builder.Logging.AddDebug();       // Adds Debug logging
+
+//Serilog 
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .Enrich.FromLogContext()
+    .CreateLogger();
+
+builder.Host.UseSerilog();
+
+
+
+
+
 
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+
+
+
+
 
 
 //used for json patch document and for returning 406 ( not acceptable if client sends you unsupported format like xml , but here we have added AddXmlDataContractSerializerFormatters(); which will help to accept xml format as well 
@@ -74,6 +103,7 @@ builder.Services.AddAuthorization(options =>
 
 
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -86,6 +116,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
 
 app.UseAuthorization();
 
