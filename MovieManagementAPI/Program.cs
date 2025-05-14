@@ -73,6 +73,8 @@ builder.Services.AddScoped<IMovieDetailsRepository, MovieDetailsRepository>();
 
 builder.Services.AddScoped<IMovieCastRepository, MovieCastRepository>();
 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
@@ -126,5 +128,17 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+try
+{
+    Log.Information("Starting MovieAPI web application...");
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "The application failed to start correctly.");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
 

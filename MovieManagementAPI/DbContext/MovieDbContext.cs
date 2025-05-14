@@ -14,6 +14,8 @@ namespace MovieManagementAPI.DbContext
         public DbSet<MovieCast> MovieCasts { get; set; }
         public DbSet<MovieDetails> MovieDetails { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -75,6 +77,11 @@ namespace MovieManagementAPI.DbContext
                 new MovieDetails { Id = 2, Genre = "Adventure", ReleaseDate = new DateTime(1993, 6, 11), MovieId = 2 },
                 new MovieDetails { Id = 3, Genre = "Crime", ReleaseDate = new DateTime(1994, 10, 14), MovieId = 3 }
             );
+
+            modelBuilder.Entity<User>().HasData(
+                new User { Id =1 , Username = "nikhil"  , PasswordHash = "qwerty@123"}
+
+             );
         }
 
     }

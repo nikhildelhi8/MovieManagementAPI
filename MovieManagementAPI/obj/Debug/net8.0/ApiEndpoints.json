@@ -1,31 +1,35 @@
 [
   {
     "ContainingType": "MovieManagementAPI.Controllers.AuthenticationController",
-    "Method": "Authenticate",
-    "RelativePath": "api/authentication/authenticate",
+    "Method": "Login",
+    "RelativePath": "api/authentication/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "authenticationRequestBody",
-        "Type": "MovieManagementAPI.Controllers.AuthenticationController\u002BAuthenticationRequestBody",
+        "Name": "userDTO",
+        "Type": "MovieManagementAPI.Models.UserDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MovieManagementAPI.Controllers.AuthenticationController",
+    "Method": "Register",
+    "RelativePath": "api/authentication/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Type": "System.String",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json",
-          "application/xml",
-          "text/xml"
-        ],
-        "StatusCode": 200
+        "Name": "userDTO",
+        "Type": "MovieManagementAPI.Models.UserDTO",
+        "IsRequired": true
       }
-    ]
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "MovieManagementAPI.Controllers.MovieCastController",

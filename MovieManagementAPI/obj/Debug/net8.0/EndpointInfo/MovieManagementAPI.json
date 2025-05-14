@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/authentication/authenticate": {
+    "/api/authentication/register": {
       "post": {
         "tags": [
           "Authentication"
@@ -14,71 +14,95 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/AuthenticationRequestBody"
+                "$ref": "#/components/schemas/UserDTO"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AuthenticationRequestBody"
+                "$ref": "#/components/schemas/UserDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/AuthenticationRequestBody"
+                "$ref": "#/components/schemas/UserDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/AuthenticationRequestBody"
+                "$ref": "#/components/schemas/UserDTO"
               }
             },
             "application/xml": {
               "schema": {
-                "$ref": "#/components/schemas/AuthenticationRequestBody"
+                "$ref": "#/components/schemas/UserDTO"
               }
             },
             "text/xml": {
               "schema": {
-                "$ref": "#/components/schemas/AuthenticationRequestBody"
+                "$ref": "#/components/schemas/UserDTO"
               }
             },
             "application/*+xml": {
               "schema": {
-                "$ref": "#/components/schemas/AuthenticationRequestBody"
+                "$ref": "#/components/schemas/UserDTO"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "string"
-                }
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/authentication/login": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDTO"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDTO"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDTO"
+              }
+            },
+            "text/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDTO"
+              }
+            },
+            "application/*+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDTO"
               }
             }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -938,20 +962,6 @@
   },
   "components": {
     "schemas": {
-      "AuthenticationRequestBody": {
-        "type": "object",
-        "properties": {
-          "userName": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "CastDTO": {
         "type": "object",
         "properties": {
@@ -1151,6 +1161,20 @@
             "items": {
               "type": "string"
             }
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDTO": {
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
