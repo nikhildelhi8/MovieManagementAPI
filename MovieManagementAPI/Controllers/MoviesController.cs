@@ -45,22 +45,22 @@ namespace MovieManagementAPI.Controllers
 
             try
             {
-                foreach (var claim in User.Claims)
-                {
-                    Console.WriteLine($"{claim.Type}: {claim.Value}");
-                }
+                //foreach (var claim in User.Claims)
+                //{
+                //    Console.WriteLine($"{claim.Type}: {claim.Value}");
+                //}
 
 
 
-                var userName = User.FindFirst("givenname")?.Value;
+                var userName = User.FindFirst(ClaimTypes.GivenName)?.Value;
 
-                if (userName != "Nikhil")
-                {
+                //if (userName != "Nikhil")
+                //{
 
-                    _logger.LogInformation("user is not authorized to access the portal ,wrong jwt token details");
-                    return Forbid();
+                //    _logger.LogInformation("user is not authorized to access the portal ,wrong jwt token details");
+                //    return Forbid();
 
-                }
+                //}
 
 
                 var moviesEntity = await _movieRepository.GetAllMoviesAsync();
