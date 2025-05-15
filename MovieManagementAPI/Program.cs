@@ -96,11 +96,11 @@ builder.Services.AddAuthentication("Bearer")
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("MustBeNikhil", policy =>
-    {
-        policy.RequireAuthenticatedUser();
-        policy.RequireClaim("name", "nikhil");
-    });
+    //options.AddPolicy("MustBeNikhil", policy =>
+    //{
+    //    policy.RequireAuthenticatedUser();
+    //    policy.RequireClaim("name", "nikhil");
+    //});
 });
 
 

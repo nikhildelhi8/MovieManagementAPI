@@ -68,7 +68,7 @@ namespace MovieManagementAPI.Controllers
             }
 
             var token = GenerateJWtToken(user.Username);
-
+           
 
             return Ok(new { token });
         }
@@ -90,7 +90,7 @@ namespace MovieManagementAPI.Controllers
             var token = new JwtSecurityToken(
 
                 issuer: _configuration["Authentication:Issuer"],
-                audience: _configuration["Authentioncation:Audience"],
+                audience: _configuration["Authentication:Audience"],
                 claims: claims,
                 expires: DateTime.UtcNow.AddHours(1),
                 signingCredentials: signingCredentials
