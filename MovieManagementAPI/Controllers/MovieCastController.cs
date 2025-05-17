@@ -10,7 +10,8 @@ namespace MovieManagementAPI.Controllers
 {
     [Route("api/cast")]
     [ApiController]
-    [Authorize(Policy = "MustBeNikhil")]
+    //[Authorize(Policy = "MustBeNikhil")]
+    [Authorize]
     public class MovieCastController : ControllerBase
     {
 

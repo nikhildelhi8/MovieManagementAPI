@@ -75,6 +75,8 @@ builder.Services.AddScoped<IMovieCastRepository, MovieCastRepository>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+builder.Services.AddScoped<IDirectorRepository , DirectorRepository>();
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
